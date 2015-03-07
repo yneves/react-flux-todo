@@ -5,6 +5,9 @@ module.exports = function(grunt) {
 
     browserify: {
       build: {
+        options: {
+          transform: [ require("grunt-react").browserify ]
+        },
         files: {
           "./src/index.js": "./src/js/index.js",
         },

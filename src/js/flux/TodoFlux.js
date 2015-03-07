@@ -1,16 +1,18 @@
 // - -------------------------------------------------------------------- - //
 // - libs
 
-var React = require("react");
-var TodoController = require("./controllers/TodoController.jsx");
+var Fluks = require("fluks");
 
 // - -------------------------------------------------------------------- - //
 // - module
 
-var element = React.createElement(TodoController,{});
+var TodoFlux = Fluks.createFlux({
+  
+});
 
-window.onload = function() {
-  React.render(element,document.body);
-};
+// - -------------------------------------------------------------------- - //
+// - exports
+
+module.exports = new TodoFlux();
 
 // - -------------------------------------------------------------------- - //
