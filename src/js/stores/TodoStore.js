@@ -26,7 +26,7 @@ function addTask(payload) {
   taskCollection.push({
     id: taskCollection.length + 1,
     text: payload.text
-  });
+  });  
   TodoStore.emitChange();
 }
 

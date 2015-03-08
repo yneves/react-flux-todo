@@ -16,8 +16,7 @@ var TaskItem = React.createClass({
     var task = this.props.task;
     return (
       <li className="task-item">
-        <strong>{'#' + task.id }</strong>
-        <span>{task.text}</span>
+        {'#' + task.id + ' ' + task.text}
       </li>
     );
   },
