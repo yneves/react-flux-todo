@@ -2,6 +2,8 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    
+    package: grunt.file.readJSON("./package.json"),
 
     browserify: {
       build: {
@@ -19,6 +21,26 @@ module.exports = function(grunt) {
         files: {
           "./src/index.css": "./src/less/index.less"
         }
+      },
+    },
+
+    uglify: {
+      dist: {
+        src: "./src/index.js",
+        dest: "./dist/<%= package.name %>-<%= package.version %>/index.js",
+      },
+    },
+
+    copy: {
+      dist: {
+        expand: true,
+        cwd: "./src",
+        src: [
+          "index.html",
+          "index.css",
+        ],
+        dest: "./dist/<%= package.name %>-<%= package.version %>/",
+        filter: function(name) { return name.indexOf("Thumbs.db") === -1 },
       },
     },
   
@@ -42,12 +64,21 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-browserify");
+  grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+
   grunt.registerTask("build",[
     "browserify:build",
     "less:build",
+  ]);
+  
+  grunt.registerTask("dist",[
+    "browserify:build",
+    "less:build",
+    "copy:dist",
+    "uglify:dist",
   ]);
 
 };

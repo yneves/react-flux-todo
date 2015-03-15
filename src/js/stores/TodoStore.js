@@ -6,13 +6,7 @@ var TodoFlux = require("../flux/TodoFlux.js");
 // - -------------------------------------------------------------------- - //
 // - module
 
-var taskCollection = [{
-  id: 1,
-  text: "sadsadsadasd",
-},{
-  id: 2,
-  text: "sadsadsadasd",
-}];
+var taskCollection = [];
 
 var TodoStore = TodoFlux.createStore({
   
